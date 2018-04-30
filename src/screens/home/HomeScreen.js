@@ -27,8 +27,8 @@ class HomeScreen extends Component
                              <Text>HomeScreen</Text>
                         </View>
                         <View style={styles.bottomContainer}>
-                        <Text>Meetups</Text>
-                            
+                      
+                             <MyMeetupsList meetups={this.state.meetups} />
                         </View>
                     </View>
            );
