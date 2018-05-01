@@ -7,7 +7,7 @@ const MyMeetupsList = ({ meetups }) => (
     <View style={styles.titleContainer}>
       <Text style={styles.title}>My Meetups</Text>
     </View>
-    <View style={styles.contentContainer}>
+<View style={styles.contentContainer}>
       <ScrollView horizontal>
         {meetups.map((meetup, i) => (
           <View key={i} style={styles.meetupCard}>
