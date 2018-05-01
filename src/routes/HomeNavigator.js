@@ -1,11 +1,12 @@
 import { TabNavigator } from 'react-navigation';
 import React from 'react';
-import {    HomeScreen, NotificationsScreen,
+import {    HomeScreen, NotificationsScreen, ProfileScreen
 
        } from '../screens';
 
   export default TabNavigator(
       {    Home: {  screen: HomeScreen, },
-           Notifications: {  screen: NotificationsScreen,}
+           Notifications: {  screen: NotificationsScreen,},
+           ProfileScreen: {  screen: ProfileScreen,}
     });
   
