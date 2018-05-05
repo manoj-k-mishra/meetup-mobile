@@ -7,6 +7,9 @@ import { fontAssets } from './helpers';
 import Expo, { AppLoading } from 'expo';
 import Root from './src/Root';
 
+import { Provider } from 'react-redux'; //for redux
+import store from './src/redux/store';
+
 EStyleSheet.build(Colors1);
 
 export default class App extends React.Component 
@@ -21,6 +24,9 @@ export default class App extends React.Component
   render() 
   {  if (!this.state.fontLoaded) 
        {  return <AppLoading />;  }
-     return <Root/> ; 
+       return ( <Provider store={store}>  
+                <Root />   
+                </Provider>  
+        );
   }
 }
