@@ -8,7 +8,7 @@ import {    HomeScreen, NotificationsScreen, ProfileScreen } from '../screens';
 
 const AddButton = styled(Touchable)` marginRight: 10;`;
 
-const NavbarDefaultStyle = { backgroundColor: Colors.redColor, };
+const NavbarDefaultStyle = { backgroundColor: Colors.$redColor, };  //top of the app color
 
   export default TabNavigator(
       {     Home: {  screen: HomeScreen,
@@ -38,17 +38,17 @@ const NavbarDefaultStyle = { backgroundColor: Colors.redColor, };
 
      {
         swipeEnabled: true,
-     //   animationEnabled: false,
+        animationEnabled: true,
         tabBarPosition: 'bottom',
         tabBarOptions: 
         {
        //   showLabel: false,
           showIcon: true,
-        //  inactiveTintColor: Colors.blackBlueColor,
-         // activeTintColor: Colors.redColor,
-       //   pressColor: Colors.redColor,
-        //  indicatorStyle: { backgroundColor: Colors.whiteColor },
-        //  style: {    backgroundColor: Colors.redColor, },
+            inactiveTintColor: Colors.$blackColor,
+            activeTintColor: Colors.$redColor,
+          pressColor: Colors.$redColor,
+         indicatorStyle: { backgroundColor: Colors.$redcolor }, //line below the icons when clicking
+          style: {    backgroundColor: Colors.$whitecolor, },
         },
      }
 );
