@@ -37,7 +37,7 @@ const NavbarDefaultStyle = { backgroundColor: Colors.redColor, };
     },
 
      {
-     //   swipeEnabled: false,
+        swipeEnabled: true,
      //   animationEnabled: false,
         tabBarPosition: 'bottom',
         tabBarOptions: 
