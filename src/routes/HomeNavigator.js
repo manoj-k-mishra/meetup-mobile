@@ -15,8 +15,8 @@ const NavbarDefaultStyle = { backgroundColor: Colors.$redColor, };  //top of the
                     navigationOptions: ({ navigation }) => (
                      {   headerStyle: NavbarDefaultStyle,
                          headerRight: ( <AddButton feedback="opacity" onPress={() => navigation.navigate('CreateMeetup')}>
-                                     <MaterialIcons  name="add-circle"  size={30}  color="#fff" />
-                                </AddButton>
+                                            <MaterialIcons  name="add-circle"  size={30}  color="#fff" />
+                                        </AddButton>
                              ),
                         tabBarIcon: ({ tintColor }) => ( <FontAwesome  name="home" size={25} color={tintColor} />   ),
                      }),
