@@ -6,6 +6,8 @@ import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import Touchable from '@appandflow/touchable';
 import {    HomeScreen, NotificationsScreen, ProfileScreen } from '../screens';
 
+
+
 const AddButton = styled(Touchable)` marginRight: 10;`;
 
 const NavbarDefaultStyle = { backgroundColor: Colors.$redColor, };  //top of the app color
