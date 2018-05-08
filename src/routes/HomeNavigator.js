@@ -8,7 +8,7 @@ import {    HomeScreen, NotificationsScreen, ProfileScreen } from '../screens';
 
 
 
-const AddButton = styled(Touchable)` marginRight: 10;`;
+const AddButton = styled(Touchable)` marginRight: 10;`; //---margin will put  the button a little right of the left most screen place
 
 const NavbarDefaultStyle = { backgroundColor: Colors.$redColor, };  //top of the app color
 
@@ -40,7 +40,7 @@ const NavbarDefaultStyle = { backgroundColor: Colors.$redColor, };  //top of the
 
      {
         swipeEnabled: true,
-        animationEnabled: true,
+        animationEnabled: false, //true is a little slow--because page turns in style--when home/notification/profile clicked in navbar
         tabBarPosition: 'bottom',
         tabBarOptions: 
         {
