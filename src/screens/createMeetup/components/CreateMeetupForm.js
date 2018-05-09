@@ -9,7 +9,10 @@ import Colors from '../../../../constants/Colors';
 import styles from './styles/CreateMeetupForm';
 
 const CreateMeetupForm = ({
-  createMeetup, checkTitle, showDateTimePicker, handleSubmit, invalid, submitting,}) => (
+  createMeetup, checkTitle, showDateTimePicker, 
+  handleSubmit, //added after validation working---used onPress--at last of thispage
+  invalid, 
+  submitting,}) => (
   <View style={styles.container}>
     <Field
       component={TextInputWithValidations}
