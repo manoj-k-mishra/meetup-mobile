@@ -6,8 +6,12 @@ import Colors from '../../../constants/Colors';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import {MeetupApi} from '../../../constants/api';
+import { CreateMeetupForm } from './components';
+
 
 const meetupApi=new MeetupApi();
+
+
 
 class CreateMeetupScreen extends Component 
 {  // static navigationOptions={title:'Create a new Meetup'}
@@ -37,47 +41,22 @@ class CreateMeetupScreen extends Component
 
     render() { console.log('/src/screens/createmeetup/createmeetupscreenjs-render-this.state=.',this.state);
                
-             return(
-                    <View style={styles.root}>
-                    <Text>CreateMeetupScreen page</Text>
-                      <View style={styles.container}>
-                          <View style={styles.item}>
-                              <FormLabel fontFamily="montserrat" >Title</FormLabel>
-                              <FormInput onChangeText={this._changeTitle}
-                                         value={this.state.title} 
-                                         selectionColor={Colors.$redColor}
-                               />
-                          </View>
-                          <View style={styles.item} >
-                              <FormLabel fontFamily="montserrat">Description</FormLabel>
-                              <FormInput onChangeText={this._changeDescription}
-                                         value={this.state.description}
-                                       multiline selectionColor={Colors.$redColor}
-                              />
-                          </View>
-                          <View style={styles.item}>
-                              <Button onPress={this._showDateTimePicker} 
-                                      title={this._checkTitle()} raised fontFamily="montserrat"/>
-                          </View>
-                          <View style={styles.buttonCreate}>
-                                <Button  backgroundColor={Colors.$blackBlueColor} 
-                                         title="Create Meetup"
-                                         raised 
-                                         fontFamily="montserrat"
-                                         disabled={this._checkIfButtonSubmitDisabled()}
-                                         onPress={this._createMeetup}
-                                />
-                           </View>
-                      </View>
-                      <DateTimePicker
-                                isVisible={this.state.isDateTimePickerVisible}
-                                onConfirm={this._handleDatePicked}
-                                onCancel={this._handleDateTimePicker}
-                                mode="datetime"
-                         />
-                    </View>
-                );
-            }
-}
-
-export default CreateMeetupScreen
+    return (
+        <View style={styles.root}>
+          <CreateMeetupForm
+            createMeetup={this._createMeetup}
+            showDateTimePicker={this._showDateTimePicker}
+            checkTitle={this._checkTitle()}
+          />
+          <DateTimePicker
+            isVisible={this.state.isDateTimePickerVisible}
+            onConfirm={this._handleDatePicked}
+            onCancel={this._handleDateTimePicker}
+            mode="datetime"
+          />
+        </View>
+      );
+    }
+  }
+  
+  export default CreateMeetupScreen

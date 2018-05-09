@@ -5,5 +5,5 @@ import { HomeReducer,} from '../screens';
 
 export default combineReducers({ 
     // fake: () => ['hello']
-    home: HomeReducer,
+    home: HomeReducer, form,
     });   //fake function reutrn an array
