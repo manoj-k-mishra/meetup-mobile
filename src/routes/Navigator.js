@@ -13,8 +13,7 @@ export default StackNavigator(
 { Home: { screen: HomeNavigator },
   CreateMeetup: 
   { screen: CreateMeetupScreen,
-    navigationOptions: ({ navigation }) => (
-    { title: 'Create a new Meetup',
+    navigationOptions: ({ navigation }) => ({ title: 'Create a new Meetup',
       headerStyle: { backgroundColor: Colors.$redColor, },
       headerTitleStyle: {  color: Colors.$whiteColor,  },
       headerLeft: (

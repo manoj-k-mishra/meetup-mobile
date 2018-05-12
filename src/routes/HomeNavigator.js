@@ -12,17 +12,29 @@ const AddButton = styled(Touchable)` marginRight: 10;`; //---margin will put  th
 
 const NavbarDefaultStyle = { backgroundColor: Colors.$redColor, };  //top of the app color
 
-  export default TabNavigator(
-      {     Home: {  screen: HomeScreen,
-                    navigationOptions: ({ navigation }) => (
-                     {   headerStyle: NavbarDefaultStyle,
-                         headerRight: ( <AddButton feedback="opacity" onPress={() => navigation.navigate('CreateMeetup')}>
-                                            <MaterialIcons  name="add-circle"  size={30}  color="#fff" />
-                                        </AddButton>
-                             ),
-                        tabBarIcon: ({ tintColor }) => ( <FontAwesome  name="home" size={25} color={tintColor} />   ),
-                     }),
-                },
+export default TabNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: NavbarDefaultStyle,
+      headerRight: (
+        <AddButton feedback="opacity" onPress={() => navigation.navigate('CreateMeetup')}>
+          <MaterialIcons
+            name="add-circle"
+            size={30}
+            color="#fff"
+          />
+        </AddButton>
+      ),
+      tabBarIcon: ({ tintColor }) => (
+        <FontAwesome
+          name="home"
+          size={25}
+          color={tintColor}
+        />
+      ),
+    }),
+  },
   //----------home screen done
          Notifications: 
          {   screen: NotificationsScreen,

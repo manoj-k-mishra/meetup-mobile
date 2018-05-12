@@ -11,6 +11,7 @@ import googleConfig from '../../../constants/googleConfig';
 import Expo from 'expo';
 import { connect } from 'react-redux';
 import { login } from './actions';
+import { LoadingScreen } from '../../commons';
 
 const FlexContainer = styled.View`flex: 1;  justifyContent: center;  alignItems: center;  alignSelf: stretch;`;
 const MeetupText = styled.Text` color: ${Colors.$redColor};  fontSize: 18;  fontFamily: montserratBold;`;
@@ -18,7 +19,9 @@ const BottomButtonWrapper = styled.View`  flex: 0.2;  flexDirection: row;`;
 const Button = styled.TouchableOpacity`  justifyContent: space-around;  alignItems: center;  flex: 1;  backgroundColor: ${({ color }) => color};
   flexDirection: row;  paddingHorizontal: 10;`;
 
-@connect(undefined, { login })
+  @connect(state => ({
+    isLoading: state.user.isLoading,
+  }), { login })
 export default class LoginScreen extends Component 
 {     state = {};
       _onLoginPress = name => 
@@ -53,7 +56,8 @@ export default class LoginScreen extends Component
              } catch (e) {  console.log('google fail2'); throw e;  }
       }
 
-    render(){   return (<FlexContainer>
+    render(){   if (this.props.isLoading) {    return <LoadingScreen color={Colors.redColor} />;    }
+                return (<FlexContainer>
                           <FlexContainer>
                             <Text style={Fonts.authTitle}>Meetup Me</Text>
                           </FlexContainer>

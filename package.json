@@ -1,6 +1,9 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "scripts": {
+    "postinstall": "rndebugger-open"
+  },
   "dependencies": {
     "@appandflow/touchable": "^2.0.0",
     "@expo/vector-icons": "^6.3.1",
@@ -11,6 +14,7 @@
     "native-base": "^2.4.3",
     "react": "^16.3.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
+    "react-native-debugger-open": "^0.3.17",
     "react-native-elements": "^0.19.1",
     "react-native-extended-stylesheet": "^0.8.1",
     "react-native-modal-datetime-picker": "^5.1.0",
@@ -19,7 +23,7 @@
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
     "redux-logger": "^3.0.6",
-    "redux-persist": "^5.9.1",
+    "redux-persist": "^4.8.0",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.2.0",
     "styled-components": "^3.2.6"
