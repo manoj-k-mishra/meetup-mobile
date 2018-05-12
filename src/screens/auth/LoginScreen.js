@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Alerts } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 import styled from 'styled-components/native';
 import Fonts from '../../../constants/Fonts';
 import Colors from '../../../constants/Colors';
@@ -15,7 +15,8 @@ const Button = styled.TouchableOpacity`  justifyContent: space-around;  alignIte
   flexDirection: row;  paddingHorizontal: 10;`;
 
 export default class LoginScreen extends Component 
-{    _onLoginPress = name => 
+{     state = {};
+      _onLoginPress = name => 
       {  if (name === 'facebook') {    this._logInWithFacebook();  } 
         else {  this._logInWithGoogle();  }
       };
@@ -27,11 +28,9 @@ export default class LoginScreen extends Component
                                       const resp=await fetch(`https://graph.facebook.com/me?access_token=${token}`,);
                                       Alert.alert('Logged In!', `Hi ${(await resp.json()).name}`)
                                      } 
-            else {  throw new Error('Something wrong with facebook auth!');  }
+          //  else {  throw new Error('Something wrong with facebook auth!');  }
       }
-    
-  
-    state = {};
+
     render(){   return (<FlexContainer>
                           <FlexContainer>
                             <Text style={Fonts.authTitle}>Meetup Me</Text>
