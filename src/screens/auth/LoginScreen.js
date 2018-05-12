@@ -7,6 +7,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Facebook, Google } from 'expo';
 import fbConfig from '../../../constants/fbConfig';
+import googleConfig from '../../../constants/googleConfig';
+import Expo from 'expo';
 
 const FlexContainer = styled.View`flex: 1;  justifyContent: center;  alignItems: center;  alignSelf: stretch;`;
 const MeetupText = styled.Text` color: ${Colors.$redColor};  fontSize: 18;  fontFamily: montserratBold;`;
@@ -31,6 +33,22 @@ export default class LoginScreen extends Component
           //  else {  throw new Error('Something wrong with facebook auth!');  }
       }
 
+      async _logInWithGoogle() 
+      {  try {  const result = await Expo.Google.logInAsync(
+                {  androidClientId: googleConfig.CLIENT_ID_IOS,
+                   scopes: ['profile', 'email'],
+                });
+               if (result.type === 'success') 
+                { // this.props.login(result.accessToken, 'google');  
+                  Alert.alert( ` Loged in with google ${result.accessToken}`)
+                  console.log('google success', result.accessToken);
+                } 
+               else {  //console.log('google fail');
+                  return { cancelled: true }; 
+                 }
+             } catch (e) {  throw e;  }
+      }
+
     render(){   return (<FlexContainer>
                           <FlexContainer>
                             <Text style={Fonts.authTitle}>Meetup Me</Text>
@@ -47,7 +65,7 @@ export default class LoginScreen extends Component
                               </FlexContainer>
                             </FlexContainer>
                             <BottomButtonWrapper>
-                              <Button  color="#db3236"  >
+                              <Button  color="#db3236" onPress={() => this._onLoginPress('google')} >
                                 <Text style={Fonts.buttonAuth}>Connect with</Text>
                                 <MaterialCommunityIcons name="google" size={30} color="#fff" />
                               </Button>
