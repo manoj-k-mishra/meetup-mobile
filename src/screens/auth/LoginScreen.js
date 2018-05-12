@@ -9,6 +9,8 @@ import { Facebook, Google } from 'expo';
 import fbConfig from '../../../constants/fbConfig';
 import googleConfig from '../../../constants/googleConfig';
 import Expo from 'expo';
+import { connect } from 'react-redux';
+import { login } from './actions';
 
 const FlexContainer = styled.View`flex: 1;  justifyContent: center;  alignItems: center;  alignSelf: stretch;`;
 const MeetupText = styled.Text` color: ${Colors.$redColor};  fontSize: 18;  fontFamily: montserratBold;`;
@@ -16,6 +18,7 @@ const BottomButtonWrapper = styled.View`  flex: 0.2;  flexDirection: row;`;
 const Button = styled.TouchableOpacity`  justifyContent: space-around;  alignItems: center;  flex: 1;  backgroundColor: ${({ color }) => color};
   flexDirection: row;  paddingHorizontal: 10;`;
 
+@connect(undefined, { login })
 export default class LoginScreen extends Component 
 {     state = {};
       _onLoginPress = name => 
@@ -26,27 +29,28 @@ export default class LoginScreen extends Component
       async _logInWithFacebook() 
       { const { type,token,  } = await Facebook.logInWithReadPermissionsAsync(fbConfig.APP_ID, 
                                     {  permissions: ['public_profile', 'email'],  });
-            if (type === 'success') { // this.props.login(token, 'facebook');
-                                      const resp=await fetch(`https://graph.facebook.com/me?access_token=${token}`,);
-                                      Alert.alert('Logged In!', `Hi ${(await resp.json()).name}`)
+            if (type === 'success') {  this.props.login(token, 'facebook');
+                                     // const resp=await fetch(`https://graph.facebook.com/me?access_token=${token}`,);
+                                     // Alert.alert('Logged In!', `Hi ${(await resp.json()).name}`)
                                      } 
-          //  else {  throw new Error('Something wrong with facebook auth!');  }
+            else {  throw new Error('Something wrong with facebook auth!');  }
       }
 
       async _logInWithGoogle() 
-      {  try {  const result = await Expo.Google.logInAsync(
+      {  try {  
+             const result = await Expo.Google.logInAsync(
                 {  androidClientId: googleConfig.CLIENT_ID_IOS,
                    scopes: ['profile', 'email'],
                 });
                if (result.type === 'success') 
-                { // this.props.login(result.accessToken, 'google');  
-                  Alert.alert( ` Loged in with google ${result.accessToken}`)
-                  console.log('google success', result.accessToken);
+                {  this.props.login(result.accessToken, 'google');  
+                //  Alert.alert( ` Loged in with google ${result.accessToken}`)
+                 // console.log('google success', result.accessToken);
                 } 
-               else {  //console.log('google fail');
+               else {  console.log('google fail1');
                   return { cancelled: true }; 
                  }
-             } catch (e) {  throw e;  }
+             } catch (e) {  console.log('google fail2'); throw e;  }
       }
 
     render(){   return (<FlexContainer>
